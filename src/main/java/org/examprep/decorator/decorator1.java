@@ -1,10 +1,10 @@
 package org.examprep.decorator;
 
-class Beverage {
+class Beverage1 {
     String description;
     boolean milk, soy, mocha, whip;
 
-    public Beverage(String description) {
+    public Beverage1(String description) {
         milk = soy = mocha = whip = false;
         this.description = description;
     }
@@ -63,9 +63,22 @@ class Beverage {
     }
 }
 
+class Matcha extends Beverage1 {
+    public Matcha(String description) {
+        super(description);
+    }
+
+    @Override
+    public int cost() {
+        return super.cost() + 15;
+    }
+}
+
 public class decorator1 {
     public static void main(String[] args) {
-        Condiment cond = new Condiment();
-        System.out.println("Hello world!");
+        Beverage1 MatchaLatte = new Matcha("Matcha Late");
+        MatchaLatte.setMilk(true);
+
+        System.out.println(MatchaLatte.cost());
     }
 }
